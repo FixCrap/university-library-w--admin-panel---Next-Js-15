@@ -1,10 +1,13 @@
-import { Button } from "@/components/ui/button";
+import BookList from "@/components/BookList";
+import BookOverview from "@/components/BookOverview";
 import React from "react";
 
 function Home() {
 	return (
 		<>
-			<Button>Click Me</Button>
+			<BookOverview />
+
+			<BookList />
 		</>
 	);
 }
