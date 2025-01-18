@@ -24,7 +24,7 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { FIELD_NAMES, FIELD_TYPES } from "@/constants";
 //import FileUpload from "@/components/FileUpload";
-//import { toast } from "@/hooks/use-toast";
+import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import ImageUpload from "./ImageUpload";
 
@@ -50,28 +50,26 @@ const AuthForm = <T extends FieldValues>({
 		defaultValues: defaultValues as DefaultValues<T>,
 	});
 
-	// const handleSubmit: SubmitHandler<T> = async (data) => {
-	// 	const result = await onSubmit(data);
+	const handleSubmit: SubmitHandler<T> = async (data) => {
+		const result = await onSubmit(data);
 
-	// 	if (result.success) {
-	// 		toast({
-	// 			title: "Success",
-	// 			description: isSignIn
-	// 				? "You have successfully signed in."
-	// 				: "You have successfully signed up.",
-	// 		});
+		if (result.success) {
+			toast({
+				title: "Success",
+				description: isSignIn
+					? "You have successfully signed in."
+					: "You have successfully signed up.",
+			});
 
-	// 		router.push("/");
-	// 	} else {
-	// 		toast({
-	// 			title: `Error ${isSignIn ? "signing in" : "signing up"}`,
-	// 			description: result.error ?? "An error occurred.",
-	// 			variant: "destructive",
-	// 		});
-	// 	}
-	// };
-
-	const handleSubmit = () => {};
+			router.push("/");
+		} else {
+			toast({
+				title: `Error ${isSignIn ? "signing in" : "signing up"}`,
+				description: result.error ?? "An error occurred.",
+				variant: "destructive",
+			});
+		}
+	};
 
 	return (
 		<div className='flex flex-col gap-4'>

@@ -2,13 +2,15 @@
 
 import Link from "next/link";
 import Image from "next/image";
-//import { signOut } from "@/auth";
+import { signOut } from "@/auth";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
+import { cn, getInitials } from "@/lib/utils";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Library } from "lucide-react";
+import { Session } from "next-auth";
 
-const Header = () => {
+const Header = ({ session }: { session: Session }) => {
 	const pathname = usePathname();
 
 	return (
@@ -40,6 +42,15 @@ const Header = () => {
 							pathname === "/library" ? "text-light-200" : "text-light-100"
 						)}>
 						Library
+					</Link>
+				</li>
+				<li>
+					<Link href='/my-profile'>
+						<Avatar>
+							<AvatarFallback className='bg-amber-100'>
+								{getInitials(session?.user?.name || "IN")}
+							</AvatarFallback>
+						</Avatar>
 					</Link>
 				</li>
 			</ul>

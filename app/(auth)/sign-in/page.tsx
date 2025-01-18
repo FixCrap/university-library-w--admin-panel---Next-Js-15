@@ -13,7 +13,7 @@ const Page = () => (
 			email: "",
 			password: "",
 		}}
-		onSubmit={() => {}}
+		onSubmit={signInWithCredentials}
 	/>
 );
 
