@@ -73,13 +73,13 @@ const BookOverview = async ({
 
 				<p className='book-description'>{description}</p>
 
-				{/* {user && (
+				{user && (
 					<BorrowBook
 						bookId={id}
 						userId={userId}
 						borrowingEligibility={borrowingEligibility}
 					/>
-				)} */}
+				)}
 			</div>
 
 			<div className='relative flex flex-1 justify-center'>
